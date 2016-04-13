@@ -8,10 +8,6 @@ var express = require('express')
  
 
 //app.listen(8070);
-app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
-});
-
 
 
 
@@ -31,3 +27,7 @@ host.on("listening", function () {
 
 
 	
+app.get('/', function (req, res) {
+  res.sendfile(__dirname + '/index.html');
+});
+
