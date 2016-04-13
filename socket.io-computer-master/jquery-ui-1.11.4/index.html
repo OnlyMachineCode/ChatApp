@@ -1,0 +1,160 @@
+<html>
+<head>
+<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<link href="jquery-ui-1.11.4\jquery-ui.css" rel="stylesheet">
+<script src="jquery-ui-1.11.4\external\jquery\jquery.js"></script>
+<script src="jquery-ui-1.11.4\jquery-ui.min.js"></script>
+
+<style>
+.row {
+    line-height:24pt;
+    
+}
+
+.row:nth-of-type(odd) {
+    background: #e0e0e0;
+}
+
+.row:nth-of-type(even) {
+    background: #F8F8F8;
+}
+
+
+
+
+
+</style>
+<script>
+	var socket = io.connect('http://localhost:8080');
+    var $con = false;
+	var $reason = null;
+	// on connection to server, ask for user's name with an anonymous callback
+	socket.on('connect', function(){
+	$con = true;
+		// call the server-side function 'adduser' and send one parameter (value of prompt)
+		socket.emit('adduser', prompt("Please enter a name. Use only alphabetical charicters and numbers"));
+	});
+
+	socket.on("joined", function(data){
+
+	document.getElementById("name").innerHTML="<b>Name</b>: "+data;
+	
+	});
+	
+	   function redoname(){
+	   socket.emit('adduser', prompt("Please enter a name. Use only alphabetical charicters and numbers"));
+	   }
+	// listener, whenever the server emits 'updatechat', this updates the chat body
+	socket.on('updatechat', function (username, data) {
+		$('#conversation').append('<div class="row"><b>'+username + ':</b> ' + data + '</div>');
+		  var elem = document.getElementById('conversation');
+  elem.scrollTop = elem.scrollHeight;
+	});
+	socket.on('refused', function (data) {
+		//$('#conversation').append('<b>'+username + ':</b> ' + data + '<br>');
+		console.log("[SERVER] Connection Refused: "+data);
+	});
+	socket.on('rename', function (data) {
+		
+		$('#conversation').append('<div class="row">'+"[Server]:Connection refused; That username already exists!");
+		redoname();
+		
+	});
+
+	function sendf(){
+	socket.emit("ask", "bob");
+	};
+	
+	// listener, whenever the server emits 'updaterooms', this updates the room the client is in
+	socket.on('updaterooms', function(rooms, current_room) {
+		$('#rooms').empty();
+		$.each(rooms, function(key, value) {
+			if(value == current_room){
+				$('#rooms').append('<div>' + value + '</div>');
+			}
+			else {
+				$('#rooms').append('<div><a href="#" onclick="switchRoom(\''+value+'\')">' + value + '</a></div>');
+			}
+		});
+	});
+
+	function switchRoom(room){
+	var r = confirm("Are you sure you want to reconnect to this room?");
+if (r == true) {
+
+   socket.emit('switchRoom', room);
+} else {
+   
+}
+		
+	}
+	
+	// on load of page
+	$(function(){
+		// when the client clicks SEND
+		$('#datasend').click( function() {
+			var message = $('#data').val();
+			$('#data').val('');
+			// tell server to execute 'sendchat' and send along one parameter
+			socket.emit('sendchat', message);
+		});
+
+		// when the client hits ENTER on their keyboard
+		$('#data').keypress(function(e) {
+			if(e.which == 13) {
+				$(this).blur();
+				$('#datasend').focus().click();
+			}
+		});
+	});
+
+	
+	 socket.on('disconnect', function(){
+	 $con = false;
+      // Do stuff (probably some jQuery)
+	  setTimeout(function(){if($con == false && $reason == null) {console.log("Lost connection from server!");}}, 1500);
+  });
+	
+	
+function kicka(){
+socket.emit("dosendkick", "bob");
+//socket kicking stuff
+}
+
+	socket.on("test",function(data){
+	$('#conversation').append('<div class="row"> TEST RECIEVED!</div>');
+		  var elem = document.getElementById('conversation');
+  elem.scrollTop = elem.scrollHeight;
+	});
+
+  $(function() {
+    $( "input[type=button], a, button" )
+      .button()
+      .click(function( event ) {
+       // event.preventDefault();
+      });
+  });
+$(function() {
+    $( "#resizable" ).resizable({
+      handles: "se"
+    });
+  });
+
+</script>
+<div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
+	<b>ROOMS</b>
+	<div id="rooms"></div>
+</div>
+<font style="font-family:Verdana" size="2">
+
+<div id="aa" style="float:left;width:600px;max-height:250px;overflow:scroll-y;padding:10px;">
+<div id="name" class="rown"></div>
+	<div id="conversation" style="max-height:250;overflow-y:scroll"></div>
+	<br>
+	<br>
+	<textarea id="data" rows="5" cols="50"></textarea>
+	<input type="button" id="datasend" value="send" />
+	<input type="button" id="datasenda" value="KICK BOB" onclick="kicka()"/>
+	<input type="button" id="ask" value="Ask" onclick="sendf()"/>
+</div>

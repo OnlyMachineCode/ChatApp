@@ -1,0 +1,112 @@
+<html>
+<head>
+<script src="shortcutjs.js"></script>
+
+
+<script>
+
+returnit = false;
+function go(){
+
+
+setInterval(function(){
+//And I and ZLIC AND JS DoC THIS IS A ALPHA TEST OF Iedit EDITOR SYNAX COLORING AND RUNNING CODE
+var area = document.getElementById('textarea');
+var text = document.getElementById('d').innerHTML;
+//#009695
+//#F57D00
+//text.replace('<span>', "").replace('</span>')
+//#F57D00 orange
+//#00FF00 green
+//#3364A4
+//alert("hello");
+/*
+var fbar = 5;
+function foo(bar){
+alert("answer"+bar+fbar);
+
+
+}
+foo("this");
+
+
+
+*/
+
+var funct = new Function();
+function x(s){
+funct = new Function(s);
+funct();
+}
+//.replace(/["]+[a-z]+["]/g, function mfunc(z){var t = '<font color ="#F57D00">'+z+'</font>'; return t;})
+   document.getElementById("d").innerHTML = "<span>"+area.value+"</span>";
+   
+   text = document.getElementById('d').innerHTML;
+var n = text.replace(/function/g , "<font color = 'skyblue'>function</font>").replace(/[0123456789]/g, function myfunction(x){var f = "<font color='#F57D00'>"+x+"</font>"; return f;}).replace(/["]["]/g, '<font color="#F57D00">""</font>').replace(/[(]+[)]/g,"<b><font color = '#00FF00'>()</font></b>" ).replace(/(?:\r\n|\r|\n)/g, '<br />').replace(/{/g, "<font color = 'red'>{</font>").replace(/}/g, "<font color = 'red'>}</font>").replace(/["]+[^0-9]+["]+/g, function(z){var g = "<font color='#F57D00'>"+z; return g;});
+var nd = n.replace(/var/g, '<font color = "skyblue">var</font>').replace(/[(]+[a-z]+[)]/g, function hi(y){var g = "<font color='#00FF00'><b>(</font></b><font color='blue'>"+y.replace(/[(]/g, "").replace(/[)]/g, "")+"</font><b><font color='#00FF00'>)</font></b>"; return g;}).replace(/alert/g, "<font color='skyblue'>alert</font>").replace(/[(]/g, "<b><font color='00FF00'>(</font></b>").replace(/[)]/g, "<b><font color='00FF00'>)</font></b>").replace(/return/g, "<font color='skyblue'>return</font>").replace(/if/g, '<font color="Red">if</font>')+"<span style='cursor:text'>|</span>";
+var ndd = nd.replace(/[_]/g, "<font color='red'>_</font>").replace(/random/g, "<font color='skyblue'>random</font>").replace(/floor/g, "<font color='MediumSeaGreen'>floor</font>");
+document.getElementById("d").innerHTML = ndd.toString();
+//document.getElementById("d").innerHTML = ""; //Slow(?)
+if(returnit == true){
+returnit = false;
+//console.log("First "+text);
+//console.log("Last "+text.replace('<span>', "").replace('</span>', ""));
+document.getElementById("d").innerHTML = nd.toString();
+x(text.replace('<span>', "").replace('</span>'))
+console.log("Last "+text.replace('<span>', "").replace('</span>', ""));
+returnit = false;
+}
+//console.log(n);
+
+}, 80);
+
+
+
+}
+
+
+
+//Color: blue
+</script>
+<style>
+.highlighter, #textarea {
+    width: 400px;
+    height: 300px;
+    font-size: 10pt;
+   
+    font-family: 'verdana';
+}
+
+.highlighter {
+    position: absolute;
+    padding: 2.8px;
+    margin-left: 0px;
+    color: white;
+	z-index: 2;
+}
+
+.highlighter span {
+	
+    color: black;
+   
+}
+
+#textarea {
+    position: relative;
+	color: black;
+    background-color: transparent;
+	   z-index: -2;
+}
+
+
+</style>
+</head>
+<body onload=go();>
+
+
+
+<div class="highlighter" id="d" style="cursor:text"></div>
+<textarea id="textarea">function()</textarea>
+<br>
+<button id ="run" onclick="returnit = true">Run code in js</button>
+</html>

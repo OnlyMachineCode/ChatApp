@@ -1,0 +1,213 @@
+<html>
+<head>
+<script src="shortcutjs.js"></script>
+
+  <link rel="stylesheet" href="C:\Users\Matthew\Desktop\JSOS\jquery-ui-1.11.4.custom\jquery-ui.min.css">
+<script src="C:\Users\Matthew\Desktop\JSOS\jquery-ui-1.11.4.custom\external\jquery\jquery.js"></script>
+<script src="C:\Users\Matthew\Desktop\JSOS\jquery-ui-1.11.4.custom\jquery-ui.min.js"></script>
+
+<script>
+
+//#009695
+//#F57D00
+//text.replace('<span>', "").replace('</span>')
+//#F57D00 orange
+//#00FF00 green
+//#3364A4
+//#3362A4 var blue
+var funct = new Function();
+function x(s){
+funct = new Function(s);
+funct();
+}
+returnit = false;
+function focus(){
+document.getElementById("de").focus();
+}
+function go(){
+
+
+
+setInterval(function(){
+
+
+
+//And I and ZLIC AND JS DoC THIS IS A ALPHA TEST OF Iedit EDITOR SYNAX COLORING AND RUNNING CODE
+
+var text = document.getElementById('d').innerHTML;
+ text = document.getElementById('d').innerHTML;
+ var area1 = document.getElementById("d").innerHTML;
+ 
+var __n = text.replace(/function/g , "<font color = 'skyblue'>function</font>").replace(/[0123456789]/g, function myfunction(x){var f = "<font color='#F57D00'>"+x+"</font>"; return f;}).replace(/["]["]/g, '<font color="#F57D00">""</font>').replace(/[(]+[)]/g,"<font color = '#00FF00'>()</font>" ).replace(/(?:\r\n|\r|\n)/g, '<br />').replace(/{/g, "<font color = 'red'>{</font>").replace(/}/g, "<font color = 'red'>}</font>").replace(/["]+[^0-9]+["]+/g, function(z){var g = "<font color='#F57D00'>"+z; return g;});
+var __nd = __n.replace(/var/g, "<font color = 'DodgerBlue '>var</font>").replace(/[(]+[a-z]+[)]/g, function hi(y){var g = "<font color='#00FF00'>(</font><font color='blue'>"+y.replace(/[(]/g, "").replace(/[)]/g, "")+"</font><font color='#00FF00'>)</font>"; return g;}).replace(/alert/g, "<font color='skyblue'>alert</font>").replace(/[(]/g, "<font color='00FF00'>(</font>").replace(/[)]/g, "<font color='00FF00'>)</font>").replace(/return/g, "<font color='skyblue'>return</font>").replace(/if/g, '<font color="Red">if</font>');
+var __ndd = __nd.replace(/[_]/g, "<font color='red'>_</font>").replace(/random/g, "<font color='skyblue'>random</font>").replace(/floor/g, "<font color='MediumSeaGreen'>floor</font>").replace(/\[/g, "<s>[</s>").replace(/\]/g, "<b>]</b>");
+var __nddd = __ndd.replace(/Array/g, "<font color='skyblue'>Array</font>");
+  document.getElementById('de').innerHTML = __nddd;
+  
+   
+
+ var raw = text.replace('<div>', "").replace('</div>');
+
+ //text.setSelectionRange(pos);
+if(returnit == true){
+returnit = false;
+//console.log("First "+text);
+//console.log("Last "+text.replace('<span>', "").replace('</span>', ""));
+document.getElementById("de").innerHTML = __nddd.toString();
+x(raw);
+
+returnit = false;
+}
+ 
+}, 80);
+
+
+}
+
+
+
+//Color: blue
+</script>
+<style>
+
+
+
+@font-face {
+    font-family: 'cwa'; /*a name to be used later*/
+    src: url('CloneWars.ttf'); /*URL to font*/
+}
+
+.highlighter, #textarea {
+
+    width: 1550px;
+	
+    height: 500px;
+	  position: absolute;
+  /*  left: 15px; */
+    top: 15px;
+    z-index: 1;
+font-family: 'verdana';
+  font-size: 12pt;
+  opacity: 0.2;
+
+  
+text-rendering: optimizeLegibility !important;
+
+-webkit-font-smoothing: antialiased !important;
+	 font-weight: 100;
+}
+
+
+
+.highlighter span {
+	 
+    color: black;
+   
+}
+
+
+
+/* #FDD9C0 */
+/* #FDAA74 darker */ 
+
+#de {
+
+    position: absolute;
+   /* left: 15px; */
+    top: 15;
+	width: 800px;
+	  font-weight: 100;
+ font-family: 'verdana';
+	font-size: 12pt;
+text-rendering: optimizeLegibility !important;
+
+-webkit-font-smoothing: antialiased !important;
+    z-index: 2; 
+	pointer-events:none
+}
+html {
+
+text-rendering: optimizeLegibility !important;
+
+-webkit-font-smoothing: antialiased !important;
+
+}
+
+
+
+#de s{
+
+text-decoration: none;
+background-color: rgba(295, 126, 0, 0.4);
+
+ font-weight: 100;
+opacity: 0.9;
+
+
+
+
+z-index : 5;
+}
+#de b{
+
+text-decoration: none;
+background-color: rgba(295, 126, 0, 0.4);
+
+ font-weight: 100;
+opacity: 0.9;
+
+
+
+
+z-index : 5;
+}
+
+#de bd{
+
+text-decoration: none;
+
+
+background-color: rgba(245, 126, 0, 0.5);
+width: 50pt;
+ font-weight: 100;
+opacity: 0.6;
+border: 1px solid rgba(250, 126, 0, 0.8);1;
+}
+</style>
+</head>
+<body onload=go();>
+
+</b>
+
+<br>
+<br>
+<br>
+<br>
+<div class="highlighter" id="d"  contenteditable="true" width="300px" onfocus=focus();>function foo()  ]</div>
+<div id="de"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<button id ="run" onclick="returnit = true">Run code in js</button>
+</html>

@@ -1,0 +1,83 @@
+<html>
+<head>
+
+
+
+<script>
+
+
+function go(){
+setInterval(function(){
+//And I and ZLIC AND JS DoC THIS IS A ALPHA TEST OF Iedit EDITOR SYNAX COLORING AND RUNNING CODE
+var area = document.getElementById('textarea');
+var text = document.getElementById('d').innerHTML;
+//#009695
+//#F57D00
+//text.replace('<span>', "").replace('</span>')
+//#F57D00
+//#3364A4
+var funct = new Function();
+function x(s){
+funct = new Function(s);
+funct();
+}
+   document.getElementById("d").innerHTML = "<span>"+area.value+"</span>";
+   text = document.getElementById('d').innerHTML
+var n = text.replace(/function/g , "<font color = 'skyblue'>function</font>").replace(/[0123456789]/g, function myfunction(x){var f = "<font color='#F57D00'>"+x+"</font>"; return f;}).replace(/["]["]/g, '<font color="#F57D00">""</font>').replace(/[(]+[)]/g,"<b><font color = '#00FF00'>()</font></b>" ).replace(/(?:\r\n|\r|\n)/g, '<br />').replace(/{/g, "<font color = 'red'>{</font>").replace(/}/g, "<font color = 'red'>}</font>").replace(/["]+[a-z]+["]/g, function mfunc(z){var t = '<font color ="#F57D00">'+z+'</font>'; return t;});
+var nd = n.replace(/var/g, '<font color = "skyblue">var</font>').replace(/[(]+[a-z]+[)]/g, function hi(y){var g = "<font color='#00FF00'><b>(</font></b><font color='blue'>"+y.replace(/[(]/g, "").replace(/[)]/g, "")+"</font><b><font color='#00FF00'>)</font></b>"; return g;})+"<span style='cursor:text'>|</span>";
+
+//document.getElementById("d").innerHTML = ""; //Slow(?)
+document.getElementById("d").innerHTML = nd.toString();
+x(text.replace('<span>', "").replace('</span>'))
+//console.log(n);
+
+}, 80);
+
+
+
+}
+
+
+
+//Color: blue
+</script>
+<style>
+.highlighter, #textarea {
+    width: 400px;
+    height: 300px;
+    font-size: 10pt;
+    
+    font-family: 'verdana';
+}
+
+.highlighter {
+    position: absolute;
+    padding: 1px;
+    margin-left: 1px;
+    color: white;
+}
+
+.highlighter span {
+	
+    color: black;
+   
+}
+
+#textarea {
+    position: relative;
+	color: transparent;
+    background-color: transparent;
+	   
+}
+
+
+</style>
+</head>
+<body onload=go();>
+
+
+
+<div class="highlighter" id="d" style="cursor:text"></div>
+<textarea id="textarea">function()</textarea>
+
+</html>;

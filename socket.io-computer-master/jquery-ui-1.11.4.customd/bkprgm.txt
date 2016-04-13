@@ -1,0 +1,76 @@
+<html>
+<head>
+
+
+
+<script>
+
+
+function go(){
+setInterval(function(){
+
+var area = document.getElementById('textarea');
+var text = document.getElementById('d').innerHTML;
+
+
+
+   document.getElementById("d").innerHTML = "<span>"+area.value+"</span>";
+   text = document.getElementById('d').innerHTML
+var n = text.replace('function' , "<font color = 'skyblue'>function</font>").replace('(',"<b><font color = '#00FF00'>(</font></b>" ).replace(')',"<b><font color = '#00FF00'>)</font></b>" ).replace(/(?:\r\n|\r|\n)/g, '<br />')+"<span style='cursor:text'>|</span>";
+
+
+document.getElementById("d").innerHTML = "";
+document.getElementById("d").innerHTML = n.toString();
+
+//console.log(n);
+
+}, 100);
+
+
+
+}
+
+
+
+//Color: blue
+</script>
+<style>
+.highlighter, #textarea {
+    width: 400px;
+    height: 300px;
+    font-size: 10pt;
+    
+    font-family: 'verdana';
+}
+
+.highlighter {
+    position: absolute;
+    padding: 1px;
+    margin-left: 1px;
+    color: white;
+}
+
+.highlighter span {
+	
+    color: black;
+   
+}
+
+#textarea {
+    position: relative;
+	color: transparent;
+    background-color: transparent;
+	   
+}
+
+
+</style>
+</head>
+<body onload=go();>
+
+
+
+<div class="highlighter" id="d" style="cursor:text"></div>
+<textarea id="textarea"></textarea>
+
+</html>
