@@ -7,7 +7,7 @@ var express = require('express')
  var fs = require('fs');
  
 
-//app.listen(8070);
+//
 
 
 
@@ -18,7 +18,7 @@ var host = dgram.createSocket("udp4");
 
 host.on("listening", function () {
   var address = host.address();
-  console.log("udp server listening " + address.address + ":" + address.port);
+  console.log("udp server listening " + process.env.OPENSHIFT_NODEJS_IP + ":" + process.env.OPENSHIFT_NODEJS_PORT);
 });
 
 
@@ -31,3 +31,4 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 
+app.listen(process.env.OPENSHIFT_NODEJS_PORT || 8080);
